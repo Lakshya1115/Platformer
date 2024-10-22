@@ -151,6 +151,15 @@ class Block (Object):
         block = get_block(size)
         self.image.blit(block, (0, 0))
         self.mask = pygame.mask.from_surface(self.image)
+
+class Fire(Object):
+    def __init__(self, x, y, width, height):
+        super().__init__(x, y, width, height, "fire")
+        self.fire = load_sprite_sheets("Traps", "Fire", width, height)
+        fire = pygame.image.load(join("assets", "Terrain", "Fire.png")).convert_alpha()
+        self.image.blit(fire, (0, 0))
+        self.mask = pygame.mask.from_surface(self.image)
+
 def get_background(name):
     image = pygame.image.load(join("assets", "Background", name))
     _, _, width, height = image.get_rect()
